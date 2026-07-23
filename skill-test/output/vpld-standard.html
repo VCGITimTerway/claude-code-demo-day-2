@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vermont Protected Lands Database (VPLD) Standard | Vermont Center for Geographic Information</title>
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Libre Franklin", "Public Sans", -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #303030;
+    background: #FFFFFF;
+  }
+  h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  a { color: #174A7C; }
+  a:not(.vt-btn):not(.vt-card) { text-decoration: underline; }
+  main { max-width: 800px; margin: 0 auto; padding: 0 24px 64px; }
+
+  /* Skip nav */
+  .skip-nav {
+    position: absolute; left: -9999px; top: 0;
+    background: #174A7C; color: #FFFFFF;
+    padding: 8px 16px; z-index: 1000;
+  }
+  .skip-nav:focus { left: 8px; top: 8px; }
+
+  /* Official government banner */
+  .usa-banner { background: #EDF0EC; color: #303030; font-size: 14px; }
+  .usa-banner-inner { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; max-width: 1200px; margin: 0 auto; }
+  .usa-banner-toggle {
+    background: none; border: none; color: #174A7C; text-decoration: underline;
+    cursor: pointer; font-size: 14px; min-height: 44px; padding: 0 8px;
+  }
+  .usa-banner-details { padding: 8px 16px; max-width: 1200px; margin: 0 auto; }
+
+  /* Header */
+  .vt-header { background: #003300; color: #FFFFFF; }
+  .vt-header-inner { display: flex; align-items: center; gap: 16px; padding: 16px 24px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; }
+  .vt-header-logo { display: flex; align-items: center; gap: 16px; }
+  .vt-header-divider { width: 1px; height: 32px; background: #FFFFFF; display: inline-block; }
+  .vt-header-titles { display: flex; flex-direction: column; }
+  .vt-header-agency { font-size: 14px; opacity: 0.85; }
+  .vt-header-app { font-size: 20px; font-weight: 700; }
+
+  /* Intro */
+  .vt-intro { max-width: 700px; margin: 0 auto; padding: 32px 24px 0; font-size: 18px; line-height: 1.5; color: #303030; }
+  .vt-intro p { margin: 0; }
+
+  /* Content sections */
+  .vt-section { margin-top: 48px; }
+  .vt-section h2 { color: #003300; font-size: 24px; margin-bottom: 16px; }
+  .vt-section p { margin: 0 0 16px; }
+  .vt-data-access {
+    background: #EDF0EC; border-radius: 8px; padding: 24px; margin-top: 16px;
+  }
+  .vt-data-access h3 { margin-top: 0; font-size: 18px; color: #174A7C; }
+  .vt-data-access code {
+    display: block; word-break: break-all; background: #FFFFFF; border: 1px solid #D7D2CB;
+    border-radius: 4px; padding: 8px 12px; font-size: 14px; margin-top: 8px;
+  }
+
+  /* Open items notice */
+  .vt-open-item {
+    border: 2px solid #F5B324; background: #FFF9EC; color: #303030;
+    padding: 16px 24px; border-radius: 4px; margin-top: 48px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .vt-open-item span[aria-hidden] { font-size: 20px; line-height: 1; }
+  .vt-open-item strong { color: #8B2929; }
+
+  /* Footer */
+  .vt-footer { background: #003300; color: #FFFFFF; padding: 32px 24px; margin-top: 64px; }
+  .vt-footer-inner { max-width: 1200px; margin: 0 auto; }
+  .vt-footer a { color: #FFFFFF; }
+
+  @media (max-width: 640px) {
+    .vt-header-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1B1B1B; color: #F1F1F1; }
+    .vt-intro, .vt-section p { color: #F1F1F1; }
+    .vt-data-access { background: #2A2A2A; }
+    .vt-data-access code { background: #1B1B1B; color: #F1F1F1; border-color: #52514E; }
+    a { color: #6FA8DC; }
+  }
+  @media (prefers-contrast: more) {
+    body { background: #000000; color: #FFFF00; }
+    a { color: #FFFF00; }
+  }
+</style>
+</head>
+<body>
+
+  <a class="skip-nav" href="#main-content">Skip to main content</a>
+
+  <div class="usa-banner" role="banner">
+    <div class="usa-banner-inner">
+      <span>An official website of the State of Vermont</span>
+      <button type="button" class="usa-banner-toggle" aria-expanded="false" aria-controls="banner-details">
+        Here's how you know
+      </button>
+    </div>
+    <div id="banner-details" class="usa-banner-details" hidden>
+      <p>Official websites use .gov. A .gov website belongs to an official government
+      organization in the United States.</p>
+    </div>
+  </div>
+
+  <header class="vt-header">
+    <div class="vt-header-inner">
+      <div class="vt-header-logo">
+        <img src="assets/vermont-logo-white.png" alt="State of Vermont" height="40">
+        <span class="vt-header-divider" aria-hidden="true"></span>
+      </div>
+      <div class="vt-header-titles">
+        <span class="vt-header-agency">Vermont Center for Geographic Information</span>
+        <span class="vt-header-app">VPLD Data Standard</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="vt-intro" aria-label="About this standard">
+      <p>
+        This page is the official Vermont GIS data standard for the Vermont Protected Lands
+        Database (VPLD), maintained by the Vermont Center for Geographic Information (VCGI).
+        It sets the field names, codes, and formats GIS professionals should use so that
+        protected-lands data stays compatible with the statewide dataset it feeds. Read the
+        Purpose, Scope, and Contents sections below before applying this standard to your
+        own data.
+      </p>
+    </section>
+
+    <section class="vt-section" aria-labelledby="purpose-heading">
+      <h2 id="purpose-heading">Purpose</h2>
+      <p>
+        The Vermont Protected Lands Database (VPLD) is a general reference of which lands
+        are conserved where, by whom, and by which means throughout the state, based on
+        ownership and/or legal restrictions. It is designed to help clarify the amount,
+        type, and extent of protected lands statewide.
+      </p>
+      <p>
+        The VPLD displays best-available information from conservation institutions and is
+        aggregated by the Vermont Center for Geographic Information (VCGI). As of 2025, the
+        VPLD also provides USGS&rsquo;s Protected Areas Database of the United States
+        (PAD-US) with consistent updates of these lands in Vermont, while also depicting
+        protected areas&rsquo; status relative to Vermont Act 59 of 2023.
+      </p>
+      <p>
+        Although it contains best-available map information, the VPLD is not a legal survey,
+        conveyance or description of property and is intended for planning purposes only.
+        Questions about specific protected areas should be directed to the protecting
+        entities themselves, which typically is the organization listed in the
+        <code>PAGENCY1</code> field.
+      </p>
+    </section>
+
+    <section class="vt-section" aria-labelledby="scope-heading">
+      <h2 id="scope-heading">Scope</h2>
+      <p>
+        Standard computer field names, codes, categories, and formats for spatial records of
+        protected land areas in Vermont, whether they are public or private lands. Included
+        lands are protected by ownership and/or legal restrictions.
+      </p>
+    </section>
+
+    <section class="vt-section" aria-labelledby="contents-heading">
+      <h2 id="contents-heading">Contents</h2>
+      <p>
+        The VPLD includes land parcels that are expected to remain protected from land
+        conversion or development.
+      </p>
+
+      <div class="vt-data-access">
+        <h3>Data access</h3>
+        <p>The live VPLD dataset is published as an ArcGIS REST Feature Service:</p>
+        <code>https://services1.arcgis.com/BkFxaEFNwHqX3tAw/arcgis/rest/services/FS_VCGI_OPENDATA_Cadastral_PROTECTEDLND_poly_SP_v2/FeatureServer</code>
+      </div>
+    </section>
+
+    <div class="vt-open-item" role="note">
+      <span aria-hidden="true">&#9888;</span>
+      <p><strong>Open item:</strong> no Agency logo was supplied for this build. The header
+      currently shows the State of Vermont logo alone &mdash; add the VCGI logo alongside it
+      once one is available.</p>
+    </div>
+
+  </main>
+
+  <footer class="vt-footer">
+    <div class="vt-footer-inner">
+      <h2>Need help?</h2>
+      <p>Contact the Vermont Center for Geographic Information at
+        <a href="mailto:vcgi@vermont.gov">vcgi@vermont.gov</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.usa-banner-toggle').addEventListener('click', function () {
+      var details = document.getElementById('banner-details');
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      details.hidden = expanded;
+    });
+  </script>
+
+</body>
+</html>
