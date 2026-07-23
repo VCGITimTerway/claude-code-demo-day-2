@@ -11,6 +11,13 @@ Reference files (read these before writing):
 - `reference/template.html` — full boilerplate: head includes, header, footer, scripts, and a placeholder section skeleton, all copied verbatim from live VCGI standards pages except for `[[PLACEHOLDER]]` tokens.
 - `reference/datawrapper-embeds.md` — how to choose between a plain HTML table and the two Datawrapper embed forms, with exact snippets.
 
+## Source repo and publishing target
+
+- **Source/development**: the HTML for these standards is developed and version-controlled in the private GitHub repo [VCGI/standards-and-guidelines-dev](https://github.com/VCGI/standards-and-guidelines-dev). If you're working inside that repo, follow its existing folder layout for where a new standard's files live.
+- **Publishing target**: published pages live in Azure Blob Storage, one subfolder per standard, under `https://vcgiblobapps.blob.core.windows.net/other/standards-guidelines/<short-name>/`.
+- **Public alias**: `https://files.vcgi.vermont.gov/other/standards-guidelines/<short-name>/` is a friendlier custom-domain alias for the same blob storage — same content, either URL works, prefer the `files.vcgi.vermont.gov` form when writing links for humans.
+- **Filename**: standards are **not** named `index.html` — each uses its own filename tied to the standard's short name (e.g. `vpldstandard.html`, `act250-standard.html`, `flu-standard.html`, `geonames-codes-standard.html`). There's no single fixed suffix pattern across existing docs; when authoring a new one, pick something short and consistent with the short-name slug (`<short-name>-standard.html` is a reasonable default), and when updating an existing standard, keep its established filename as-is.
+
 ## Ground rules
 
 1. **Never modify the `<head>` CDN links, `<header>`, `<footer>`, or `<script>` blocks in `template.html`.** They're byte-for-byte identical across every published standard. If the user wants to bump the shared CSS version or change footer contacts, flag that this affects every VCGI standard, not just the one being authored, and confirm before touching it.
@@ -29,7 +36,7 @@ Reference files (read these before writing):
 ## Workflow
 
 1. **Gather the essentials** before writing anything. At minimum you need:
-   - Full title and a short-name slug (used for the ToC anchor style and matches the publishing path convention `standards-guidelines/<short-name>/<short-name>-standard.html`)
+   - Full title and a short-name slug (used for the Azure blob subfolder and filename — see "Source repo and publishing target" above)
    - Version string and date (format: `Version X.Y | Month Day, Year` — existing docs use inconsistent version schemes: plain year like `2025`, or semantic like `1.2`/`2.0` — ask which convention this standard's owner already uses, or default to semantic versioning for a brand-new one)
    - Purpose (why the standard exists), Scope (what it covers), Applicability (who must/should comply — check for statutory language like "per 10 V.S.A. § 123" if this is a mandatory-adoption standard, vs. "recommended" for a guideline)
    - Definitions of key terms
