@@ -1,0 +1,45 @@
+---
+name: vt-gis-standard
+description: Scaffold a new Vermont GIS data Standard or Guideline HTML document using VCGI's shared vcgi-sov-stylesheet template — the pattern used at files.vcgi.vermont.gov/other/standards-guidelines/*. Use when asked to draft, create, author, or publish a new VT/Vermont GIS data standard or guideline document, or to convert existing schema/domain documentation into that format.
+---
+
+# Vermont GIS Standard/Guideline authoring
+
+VCGI (Vermont Center for Geographic Information) publishes data standards and guidelines as static HTML pages that all share one CSS file (`vcgi-sov-stylesheet-v.1.1.css`) and a common header/footer/layout. Examples: the VPLD, Act 250 Tier Map, Future Land Use, and Geographic Names & Codes standards. This skill scaffolds a new document that matches that shared template exactly, so it drops into the existing family without visual or structural drift.
+
+Reference files (read these before writing):
+- `reference/template.html` — full boilerplate: head includes, header, footer, scripts, and a placeholder section skeleton, all copied verbatim from live VCGI standards pages except for `[[PLACEHOLDER]]` tokens.
+- `reference/datawrapper-embeds.md` — how to choose between a plain HTML table and the two Datawrapper embed forms, with exact snippets.
+
+## Ground rules
+
+1. **Never modify the `<head>` CDN links, `<header>`, `<footer>`, or `<script>` blocks in `template.html`.** They're byte-for-byte identical across every published standard. If the user wants to bump the shared CSS version or change footer contacts, flag that this affects every VCGI standard, not just the one being authored, and confirm before touching it.
+2. **Every `h2`/`h3`/`h4` inside `main-article-content` needs an `id` and an inline heading-permalink link**, e.g.:
+   ```html
+   <h2 id="scope">Scope
+       <a href="#scope" class="heading-permalink" aria-label="Permalink to this section">
+       <i class="fas fa-link"></i></a>
+   </h2>
+   ```
+3. **The floating Table of Contents must exactly mirror the heading ids** — every ToC `<a href="#id">` needs a matching heading `id`, and every heading needs a ToC entry (nest `h3`/`h4` under their parent as nested `<ul>`, matching `template.html`).
+4. **Don't invent new CSS classes.** The stylesheet already defines `alert-info/tip/important/warning/danger`, `notice`, `card-grid`/`card`, `table-of-contents`, `color-palette-grid`, `task-list`, etc. — reuse them instead of adding inline styles or new selectors.
+5. **Pick the right content wrapper per block**: `content-wrapper` (max 800px, default prose column), `content-wrapper-wide` (full width — use for wide schema/domain tables and Datawrapper embeds so they aren't squeezed), `content-wrapper-medium` (90% — for large images/diagrams). A single page can open/close multiple wrapper divs as it moves between prose and wide tables — see `template.html` for the pattern of closing one wrapper, opening another, then reopening the first.
+6. **Accessibility**: every `<img>` needs real `alt` text (not empty, unless purely decorative); figures get a `<figcaption>`; don't skip heading levels (h2 → h3 → h4, never h2 → h4).
+
+## Workflow
+
+1. **Gather the essentials** before writing anything. At minimum you need:
+   - Full title and a short-name slug (used for the ToC anchor style and matches the publishing path convention `standards-guidelines/<short-name>/<short-name>-standard.html`)
+   - Version string and date (format: `Version X.Y | Month Day, Year` — existing docs use inconsistent version schemes: plain year like `2025`, or semantic like `1.2`/`2.0` — ask which convention this standard's owner already uses, or default to semantic versioning for a brand-new one)
+   - Purpose (why the standard exists), Scope (what it covers), Applicability (who must/should comply — check for statutory language like "per 10 V.S.A. § 123" if this is a mandatory-adoption standard, vs. "recommended" for a guideline)
+   - Definitions of key terms
+   - Referenced standards (federal/ANSI/other VCGI standards this one builds on)
+   - The data schema itself: field names, aliases, data types, lengths, descriptions, and any coded-value domains
+   - Whether any tables already exist in Datawrapper (get chart IDs) or need to be authored as plain HTML
+   - At least one history entry (even a brand-new standard gets an initial "Version X.Y approved/drafted by..." entry)
+   - Statutory authority: confirm whether this standard falls under VCGI's general standards-and-guidelines authority (use the canonical paragraph in `template.html`, which cites 10 V.S.A. chapter 8 and the EGC adoption procedure) or has its own separate authorizing statute to cite instead/in addition
+2. **Copy `template.html`** as the starting point rather than writing HTML from scratch — this guarantees the shared boilerplate stays exact.
+3. **Fill in each section** per the ground rules above. Match the Specifications subsection names to what the schema actually needs — existing docs vary (`Data Format`/`Schema`/`Domains` for act250/flu; `Standard Codes`/`Concatenated Fields`/`Domains`/`Listing of Codes` for geonames-codes) — don't force a subsection that doesn't apply, and don't omit Domains if any field has coded values.
+4. **Build the schema/domain tables** using `reference/datawrapper-embeds.md` to decide plain-HTML vs. Datawrapper for each one independently.
+5. **Write the History entry** newest-first. Use a nested `<ul>` or a two-column Date/Description `<table>` — either is an established pattern; pick a table if frequent short entries are expected, a list if entries tend to be longer narrative bullets.
+6. **Sanity-check before handing back**: every ToC link resolves to a real id; every heading has a permalink icon; no orphaned `content-wrapper-wide` divs left unclosed; all external links (statutes, EGC procedure, referenced standards) are real URLs, not placeholders.
