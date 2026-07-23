@@ -6,6 +6,7 @@ This repo is a working example of developing a [Claude Code skill](https://docs.
 
 - **`.claude/skills/vt-gis-standard/`** — a skill that scaffolds new VT GIS Standard/Guideline HTML documents matching VCGI's shared publishing template (common header/footer/CSS, table of contents, standard section skeleton, Datawrapper table conventions). See [`SKILL.md`](.claude/skills/vt-gis-standard/SKILL.md) for the full authoring workflow and [`reference/`](.claude/skills/vt-gis-standard/reference/) for the boilerplate template and Datawrapper embed patterns it's built from.
 - **`examples/parcel/`** — a worked example: the currently-operational [Vermont GIS Parcel Data Standard v2.3](https://vcgi.vermont.gov/sites/vcgiupdate/files/doc_library/02-k-VT_GIS_Parcel_Data_Standard.pdf) (source PDF and Word doc included alongside) ported into the skill's HTML template, as a real-world test of the skill against an existing, non-web-native standard. Live preview via GitHub Pages: **[vcgitimterway.github.io/claude-code-demo-day-2/examples/parcel/parcel-standard.html](https://vcgitimterway.github.io/claude-code-demo-day-2/examples/parcel/parcel-standard.html)**
+- **`examples/metadata/`** — a second worked example: the live, Drupal-hosted [Metadata Standard and Guidelines](https://vcgi.vermont.gov/resources/vermont-gis-standards-and-guidelines/metadata-standard-and-guidelines) (v5.0) ported into the skill's HTML template, testing a web-native source with its own two-part Standard/Guidelines structure and two migrated SVG diagrams. Live preview via GitHub Pages: **[vcgitimterway.github.io/claude-code-demo-day-2/examples/metadata/metadata-standard.html](https://vcgitimterway.github.io/claude-code-demo-day-2/examples/metadata/metadata-standard.html)**
 
 ## Background
 
@@ -15,6 +16,6 @@ The actual standards documents are developed and published from a separate, priv
 
 ## Status
 
-Skill scaffolds new standards from scratch (head/header/footer boilerplate, ToC, standard section skeleton, Datawrapper vs. plain-HTML table guidance). Refined against real examples in the private dev repo to capture the actual range of section names and folder conventions in use, and validated end-to-end by porting the real, currently-operational Parcel Data Standard (v2.3, previously PDF-only) into the template — rendering it headlessly to confirm layout and catch a real overflow bug before committing.
+Skill scaffolds new standards from scratch (head/header/footer boilerplate, ToC, standard section skeleton, Datawrapper vs. plain-HTML table guidance). Refined against real examples in the private dev repo to capture the actual range of section names and folder conventions in use, and validated end-to-end by porting two real, live standards into the template — the currently-operational Parcel Data Standard (v2.3, previously PDF-only) and the Drupal-hosted Metadata Standard and Guidelines (v5.0, including image-asset migration) — rendering each headlessly to confirm layout before committing.
 
 This README is kept up to date as the skill evolves.
