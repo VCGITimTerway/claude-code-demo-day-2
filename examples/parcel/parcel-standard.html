@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermont GIS Parcel Data Standard</title>
+
+    <!-- External Resources -->
+    <link rel="icon" href="https://files.vcgi.vermont.gov/logo/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uswds/2.13.3/css/uswds.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+
+    <!-- Link to current VCGI Sov-Themed stylesheet -->
+    <link rel="stylesheet" href="https://files.vcgi.vermont.gov/other/css/vcgi-sov-stylesheet-v.1.1.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- ======================= HEADER ======================= -->
+    <header class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="header-top-left">
+                    <span class="vermont-logo__text">An Official <strong>Vermont</strong> Government Website</span>
+                </div>
+                <div class="header-top-right">
+                    <a href="https://www.vermont.gov/" class="state-logo-top-right" target="_blank" rel="noopener noreferrer">
+                        <img src="https://files.vcgi.vermont.gov/logo/vermont-logo-white.png" alt="State of Vermont" onerror="this.onerror=null;this.src='https://placehold.co/128x35/003300/ffffff?text=Vermont';">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-grow-1">
+
+        <!-- =================================================================== -->
+        <!-- ======================= YOUR CONTENT HERE ======================= -->
+        <!-- =================================================================== -->
+        <div class="content-wrapper">
+            <h1>Vermont GIS Parcel Data Standard</h1>
+            <p class="version-info">Version 2.3 | October 20, 2016</p>
+
+            <div class="table-of-contents">
+                <h3>Table of Contents</h3>
+                <ul>
+                    <li><a href="#purpose">Purpose</a></li>
+                    <li><a href="#scope">Scope</a></li>
+                    <li><a href="#applicability">Applicability</a></li>
+                    <li><a href="#definitions">Definitions</a></li>
+                    <li><a href="#referenced-standards">Referenced Standards</a></li>
+                    <li>
+                        <a href="#specifications">Specifications</a>
+                        <ul>
+                            <li><a href="#data-format">Data Format</a></li>
+                            <li><a href="#level-1">Level 1 Requirements</a></li>
+                            <li><a href="#level-2">Level 2 Requirements</a></li>
+                            <li><a href="#domains">Domains</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#history">Updates and History</a></li>
+                    <li><a href="#statutory-authority">Statutory Authority</a></li>
+                </ul>
+            </div>
+
+            <div class="main-article-content">
+
+                <h2 id="purpose">Purpose
+                    <a href="#purpose" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <p>GIS (geographic information system) parcel data is the digital geographically-referenced data used to model the locations of parcel boundaries and unlanded buildings, along with associated attribute information, for input to geospatial analysis and production of municipal tax maps. Although GIS parcel data cannot replace detailed ground surveys, the data does assist municipal officials with functions such as accurate property tax assessment, economic development, conservation, planning, zoning, and public safety. Towns can link their GIS parcel data to their electronic municipal Grand List data and display local information.</p>
+                <p>This standard has two objectives:</p>
+                <ul>
+                    <li>Define technical requirements for municipalities to utilize when creating or updating GIS parcel data. Separate levels of this standard allow municipalities to pick a level suitable for procurement, budget, and resource considerations and ensure that high quality and reliable parcel information products are developed. This standard provides an extensible framework that serves as a foundation for production of supersets of the standard levels for particular municipal business needs.</li>
+                    <li>Establish common data elements and ensure consistency between different municipal GIS parcel data sets to ensure that all delivered municipal GIS parcel datasets can be merged into a single statewide dataset without translation. The common data elements and data consistency provide a framework that yields efficient exchange of parcel data and parcel data aggregation.</li>
+                </ul>
+
+                <h2 id="scope">Scope
+                    <a href="#scope" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <p>This standard defines the technical requirements for creating and maintaining municipal GIS parcel data in Vermont: required feature classes and tables, field schemas, coded value domains, file/naming format, coordinate system, and geometry/topology rules. It applies to development of digital versions of municipal parcel maps for use in planning, property assessment, and graphic map display. It is organized into two compliance levels — <strong>Level 1</strong>, the minimum requirement, and <strong>Level 2</strong>, an optional enhanced framework — so that municipalities can select the level suitable to their procurement, budget, and resource considerations.</p>
+                <p>This standard is <strong>not</strong> a general purpose standard for traditional printed parcel map sheets.</p>
+
+                <h2 id="applicability">Applicability
+                    <a href="#applicability" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <p>The Transportation Bill of 2016 (Act 158) created the Statewide Property Parcel Mapping Program by which a statewide digital parcel data layer (data set) will be developed, maintained, and made available to state government, regional planning commissions, municipalities, and the public.</p>
+                <p>Compliance with this standard is required for any contracts or arrangements for creation of GIS parcel data through the Statewide Property Parcel Mapping Program.</p>
+                <p>GIS parcel data is a recommended source for municipal tax maps. Municipal tax maps are for tax assessment purposes and, unlike areas outside New England, are not the legal (cadastral) record of property ownership. While property boundaries on assessor maps often serve as a proxy for ownership, any authoritative representation of property ownership must be based on records from the municipality and/or work by a licensed professional land surveyor.</p>
+
+                <div class="notice">
+                    <p class="alert-title">Templates Available</p>
+                    <p>VCGI provides shapefile, .dbf table, geodatabase, and metadata templates that can help in the conversion to, or creation of, data that meets levels of this standard. Go to <a href="https://vcgi.vermont.gov/">vcgi.vermont.gov</a> or call 802-882-3005 for more information.</p>
+                </div>
+
+                <h2 id="definitions">Definitions
+                    <a href="#definitions" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <ul>
+                    <li><strong>Real Estate</strong> - Land, improvements to the land, and certain buildings.</li>
+                    <li><strong>Grand List</strong> - As of April 1st of any given year, a list that contains a brief description and the listed valuation of each separate piece or parcel of taxable real estate.</li>
+                    <li><strong>Parcel</strong> - State statute defines a parcel as "all contiguous land in the same ownership, together with all improvements thereon" (32 V.S.A. § 4152(a)(3)). Though not specifically stated above, the accepted interpretation is that division of a tract by a road does not create two parcels. This standard requires that each parcel or unlanded building of the Grand List be modeled in GIS data. Examples of parcels and unlanded buildings modeled in GIS data per this standard include but are not limited to: a lot within a subdivision, a condominium unit, condominium common land, a mobile home on leased land, and a camp on leased land.</li>
+                    <li><strong>Unlanded Building</strong> - Condominium unit, mobile home, camp, or other building that is a unit of real estate which is separate from the underlying land surface. In some cases, the underlying land is rented.</li>
+                    <li><strong>Active Parcel and Inactive Parcel</strong> - Sometimes, when two or more abutting parcels have the same owner, one of those parcels is considered the main parcel, or active parcel, to which a single collective tax bill is associated for all of the parcels. The other parcels are inactive. In these cases, all of the parcels are collectively modeled as one parcel with attribution of the active parcel in the active parcels data layer per this standard; inactive parcels are modeled in a separate data layer. When the owner of one of the inactive parcels becomes different, that parcel becomes active. Both active and inactive parcels have SPAN numbers.</li>
+                    <li><strong>SPAN</strong> - School Property Account Number - a unique, state-assigned identification number for each parcel/unlanded building. SPAN number information is critical to database synergy between Vermont GIS parcel data and Grand List data.</li>
+                    <li><strong>Multi-part Non-contiguous Parcel</strong> - Sometimes, a non-contiguous geometry object (multi-part polygon) is required in order to model one Grand List record as one record in the GIS data.</li>
+                    <li><strong>Public Right-of-Way</strong> - An area that is legally dedicated to public right-of-way purpose. Ingress/egress easements or "private right-of-way easements" that overlay underlying parcels are NOT considered to be public right-of-ways and are NOT considered to be parcels. Public right-of-way areas do not have SPAN numbers.</li>
+                    <li><strong>Ingress-Egress Easement / Private Right-of-Way</strong> - Arranged for access to locations by traversing one or more parcels. Ingress-egress easements that overlay underlying parcels are NOT considered to be public right-of-ways and are NOT considered to be parcels.</li>
+                    <li><strong>Map ID</strong> - Unique parcel identifier, determined by the municipality, which is distinct from the unique identifier in the Grand List.</li>
+                    <li><strong>Discrepancy List</strong> - List of properties with ownership or area conflicts/uncertainty above a threshold agreed upon by municipality and map consultant.</li>
+                    <li><strong>Shapefile</strong> - A GIS data format that is widely used in proprietary and open source realms of GIS software. The shapefile format allows data layers to be created with geometry types that include points, lines, and polygons.</li>
+                    <li><strong>dBASE (.dbf)</strong> - A tabular data format in which tabular information is stored, either as a component of a shapefile or as a stand-alone table.</li>
+                    <li><strong>Geodatabase</strong> - A data storage format that is based on relational database concepts. The geodatabase format can store spatial and non-spatial data types and supports complex data object relationships, is scalable from the file-based "file geodatabase" (.gdb) implementation to an enterprise implementation, and allows creation and storage of annotation data layers.</li>
+                    <li><strong>Feature Class</strong> - Feature classes stored within a geodatabase and shapefiles are both considered to be feature classes.</li>
+                    <li><strong>Metadata</strong> - Documentation about the data, including date, source, and provider.</li>
+                </ul>
+
+                <h2 id="referenced-standards">Referenced Standards
+                    <a href="#referenced-standards" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <ul>
+                    <li><a href="https://files.vcgi.vermont.gov/other/standards-guidelines/geonames-codes/geonames-codes-standard.html">Vermont Geographic Area Names and Codes Standard</a> - source for valid municipality (<code>TOWN</code>) values, per the <code>COMMNAME</code> field of VCGI's commcode lookup table.</li>
+                    <li>VCGI's "Adoption of VT GIS Standards and Guidelines" procedure (Version 1.0) - the procedure this standard was adopted under.</li>
+                </ul>
+
+                <h2 id="specifications">Specifications
+                    <a href="#specifications" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <p>Level 1 describes the minimum components and characteristics of GIS parcel data required to meet the objectives of this standard. Level 2 provides a framework for developing an extended and/or enhanced GIS parcel data set, and includes all Level 1 requirements plus additional feature classes and match requirements.</p>
+
+                <h3 id="data-format">Data Format
+                    <a href="#data-format" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h3>
+                <p>For each municipality, all geospatial and tabular data are delivered as either a single version 10.x or higher file geodatabase (.gdb) or a set of shapefiles and dBASE (.dbf) files. Each file geodatabase or set of shapefiles and dBASE files must be accompanied by a metadata file in FGDC CSDGM XML format.</p>
+                <p>All geospatial data must be in Vermont State Plane Meters, NAD 83 (National Spatial Reference System (NSRS) or most current).</p>
+
+                <h4 id="naming">Naming
+                    <a href="#naming" class="heading-permalink" aria-label="Permalink to Naming">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>If a municipality's data is delivered in geodatabase format, all geospatial and tabular data must be within a single version 10.x or higher file geodatabase named <code>VTPARCELS_&lt;town name&gt;_&lt;YYYY&gt;.gdb</code>, where <code>YYYY</code> represents the Grand List year (year of April 1st Grand List) to which the data is current.</p>
+                <p>If a municipality's data is delivered as a set of shapefiles and dBASE (.dbf) files, all geospatial and tabular data must be within a single compressed file, in .zip format, named <code>VTPARCELS_&lt;town name&gt;_&lt;YYYY&gt;.zip</code>.</p>
+                <p>All deliveries must be accompanied by a stand-alone FGDC CSDGM metadata file in XML format named <code>VTPARCELS_&lt;town name&gt;_&lt;YYYY&gt;.xml</code>.</p>
+
+                <h4 id="metadata">Metadata Content Requirement
+                    <a href="#metadata" class="heading-permalink" aria-label="Permalink to Metadata Content Requirement">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>For each municipality, a single metadata file, in FGDC CSDGM XML format, is required. All feature classes (or shapefiles) and non-spatial tables must be documented in that metadata file. Content is required for the following core metadata elements:</p>
+                <ul>
+                    <li><code style="word-break: break-all;">Identification_Information/Citation/Citation_Information/Title</code></li>
+                    <li><code style="word-break: break-all;">Identification_Information/Citation/Citation_Information/Originator</code></li>
+                    <li><code style="word-break: break-all;">Identification_Information/Citation/Citation_Information/Publication_Information/Publisher</code></li>
+                    <li><code style="word-break: break-all;">Identification_Information/Description</code></li>
+                    <li><code style="word-break: break-all;">Identification_Information/Time_Period_of_Content</code> - the Grand List year to which the data is current, using the format <code>YYYY</code>. The date of Grand List export for use in parcel data development shall be noted.</li>
+                    <li><code style="word-break: break-all;">Identification_Information/Spatial_Domain</code></li>
+                    <li><code style="word-break: break-all;">Identification_Information/Use_Constraints</code> - populate this attribute with the following disclaimer: <em>"This data layer is not a legal survey. It is not a legal conveyance or description of property and is intended for planning purposes only. VCGI and the State of VT make no representations of any kind, including but not limited to the warranties of merchantability or fitness for a particular use, nor are any such warranties to be implied with respect to the data."</em></li>
+                    <li><code>Data_Quality_Information</code> - include Lineage with Source_Information and Process_Step(s).</li>
+                    <li><code>Entity_and_Attribute_Information</code> - include an individual Detailed_Description for every feature class (or shapefile) and non-spatial table, and provide Attribute information for all fields.</li>
+                </ul>
+                <p>Some municipalities have technical applications and business processes that require certain database schema elements in their GIS parcel data that vary from the feature class and table specifications in this standard. In these cases, VCGI encourages municipalities and/or their mapping contractors to provide extract-transform-load (ETL) utilities that use field-mapping to generate "publishing" data sets that are in accord with a requirement level of this standard.</p>
+            </div>
+        </div>
+
+        <!-- CONTENT WRAPPER WIDE: Level 1 feature class/field tables -->
+        <div class="content-wrapper-wide">
+            <div class="main-article-content">
+
+                <h3 id="level-1">Level 1 Requirements
+                    <a href="#level-1" class="heading-permalink" aria-label="Permalink to Level 1 Requirements">
+                    <i class="fas fa-link"></i></a>
+                </h3>
+                <p>The delivery includes the feature classes and tables described below.</p>
+
+                <h4 id="line-parcels">Feature Class: <code>VTPARCELS_&lt;Town Name&gt;_&lt;YYYY&gt;_line_parcels</code>
+                    <a href="#line-parcels" class="heading-permalink" aria-label="Permalink to line_parcels">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>A line counterpart to the <code>poly_parcels</code> feature class. Boundary geometries of <code>poly_parcels</code> are sourced from this feature class, which only includes lines related to parcels that have active SPAN numbers. Can be used for symbolizing parcel boundaries by type. Geometry Type: <strong>line</strong>.</p>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th><th>Field Type</th><th>Allowed Values</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>PLTYPE</td><td>Line type</td><td>Text, length 9</td><td>No Null/empty strings. See <a href="#pltype">PLTYPE domain</a>.</td></tr>
+                        <tr><td>PARCBOUND</td><td>Boolean-like field indicating if the line is part of a parcel boundary</td><td>Text, length 1</td><td>No Null/empty strings. <code>Y</code> (is a parcel boundary) or <code>N</code> (is not).</td></tr>
+                        <tr><td>YEAR</td><td>Grand List Year that mapping data represents</td><td>Short Integer</td><td>4-digit year. No Null values or zeros.</td></tr>
+                        <tr><td>TOWN</td><td>Name of the town, city, gore, or grant</td><td>Text, length 30</td><td>No Null/empty strings. See <a href="#town">TOWN domain</a>.</td></tr>
+                        <tr><td>SOURCENAME</td><td>Name of the source information</td><td>Text, length 80</td><td>Optional. Null/empty strings allowed.</td></tr>
+                        <tr><td>SOURCETYPE</td><td>Type of source information</td><td>Text, length 19</td><td>No Null/empty strings. See <a href="#sourcetype">SOURCETYPE domain</a>.</td></tr>
+                        <tr><td>SOURCEDATE</td><td>Date of the source information</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>; fill unknown MM/DD with zeros; enter <code>UNKNOWN</code> if the source date is unknown.</td></tr>
+                        <tr><td>EDITMETHOD</td><td>Method of capturing the feature's geometry</td><td>Text, length 20</td><td>No Null/empty strings. See <a href="#editmethod">EDITMETHOD domain</a>.</td></tr>
+                        <tr><td>EDITOR</td><td>Name of editor that added or modified the feature</td><td>Text, length 50</td><td>No Null/empty strings. Enter <code>UNKNOWN</code> if the editor is unknown (e.g. pre-existing GIS data).</td></tr>
+                        <tr><td>EDITDATE</td><td>Date the feature was added or modified</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>, or <code>UNKNOWN</code> if not known.</td></tr>
+                        <tr><td>EDITNOTE</td><td>Additional helpful information on the feature</td><td>Text, length 254</td><td>Optional. Null/empty strings allowed.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="poly-parcels">Feature Class: <code>VTPARCELS_&lt;Town Name&gt;_&lt;YYYY&gt;_poly_parcels</code>
+                    <a href="#poly-parcels" class="heading-permalink" aria-label="Permalink to poly_parcels">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>Active parcels (excluding unlanded structures), public rights-of-way, trail rights-of-way (for trails identified on the VTrans General Highway/Town Highway Maps), and surface water areas that serve as property boundaries. Consists of polygon features for all active parcels (excluding unlanded structures) listed in the municipality's Grand List. Ingress/egress or "private right-of-way" easements that overlay underlying parcels are NOT public rights-of-way and are NOT parcels; easement data is not required at Level 1, and if included should be modeled in additional separate feature class(es). Geometry Type: <strong>polygon</strong>. Each Grand List record must only be modeled as one record; a non-contiguous multi-part parcel is modeled as a single multi-part polygon. The <code>SPAN</code> field must not contain duplicate SPAN numbers. Mapping parcels to the public right-of-way line rather than the road centerline is a suggested best practice.</p>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th><th>Field Type</th><th>Allowed Values</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SPAN</td><td>Unique number assigned by VT Dept. of Taxes</td><td>Text, length 13</td><td>SPAN as listed in the Grand List (<code>nnn-nnn-nnnnn</code>), or Null/empty if the feature is a public right-of-way or water area with no SPAN. Only one record may carry a given SPAN. If the feature is condominium common land with no SPAN, populate per the <a href="#condominium-common-land">condominium common land convention</a>. Otherwise a presumed/predicted SPAN can be entered, which will be flagged as non-matching via the intersection table.</td></tr>
+                        <tr><td>MAPID</td><td>Unique identification of the parcel assigned by the town</td><td>Text, length 80</td><td>Text up to length of field.</td></tr>
+                        <tr><td>PROPTYPE</td><td>Type of property/area</td><td>Text, length 9</td><td>No Null/empty strings. See <a href="#proptype">PROPTYPE domain</a>.</td></tr>
+                        <tr><td>YEAR</td><td>Grand List Year that mapping data represents</td><td>Short Integer</td><td>4-digit year. No Null values or zeros.</td></tr>
+                        <tr><td>TOWN</td><td>Name of the town, city, gore, or grant</td><td>Text, length 30</td><td>No Null/empty strings. See <a href="#town">TOWN domain</a>.</td></tr>
+                        <tr><td>SOURCENAME</td><td>Name of the source information</td><td>Text, length 80</td><td>Optional. Null/empty strings allowed.</td></tr>
+                        <tr><td>SOURCETYPE</td><td>Type of source information</td><td>Text, length 19</td><td>No Null/empty strings. See <a href="#sourcetype">SOURCETYPE domain</a>.</td></tr>
+                        <tr><td>SOURCEDATE</td><td>Date of the source information</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>; fill unknown MM/DD with zeros; <code>UNKNOWN</code> if not known.</td></tr>
+                        <tr><td>EDITMETHOD</td><td>Method of capturing the feature's geometry</td><td>Text, length 20</td><td>No Null/empty strings. See <a href="#editmethod">EDITMETHOD domain</a>.</td></tr>
+                        <tr><td>EDITOR</td><td>Name of editor that added or modified the feature</td><td>Text, length 50</td><td>No Null/empty strings. <code>UNKNOWN</code> if unknown.</td></tr>
+                        <tr><td>EDITDATE</td><td>Date the feature was added or modified</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>, or <code>UNKNOWN</code>.</td></tr>
+                        <tr><td>MATCHSTAT</td><td>Status of matching/relating the Grand List to this feature by SPAN</td><td>Text, length 9</td><td>No Null/empty strings. <code>MATCH</code> if the SPAN matches an active Grand List SPAN; <code>EXEMPT</code> for features exempted from matching (e.g. condominium common land with no SPAN, public right-of-way, water); otherwise <code>UNMATCHED</code>.</td></tr>
+                        <tr><td>EDITNOTE</td><td>Additional helpful information on the feature</td><td>Text, length 254</td><td>Optional. Null/empty strings allowed.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="intersection-table">Table: <code>TABLE_VTPARCELS_&lt;Town Name&gt;_&lt;YYYY&gt;_intersection</code>
+                    <a href="#intersection-table" class="heading-permalink" aria-label="Permalink to the intersection table">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>Relates records of the municipality's Grand List which have active SPAN numbers to records in <code>poly_parcels</code> that represent parcel features (<code>PROPTYPE = 'PARCEL'</code>). Supports bi-directional matching/reconciliation between the Grand List and the parcels feature class — identifying Grand List records of unlanded buildings located on a particular land parcel, identifying the land parcel a Grand List unlanded building sits on, and identifying mismatches between the Grand List and the GIS parcel data. Use a .dbf file if submitting data in shapefile format, otherwise a geodatabase table.</p>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th><th>Field Type</th><th>Allowed Values</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>GIS_SPAN</td><td>The SPAN exactly as attributed in the SPAN field of <code>poly_parcels</code>. All unique SPAN entries of <code>poly_parcels</code> representing parcel features (<code>PROPTYPE = 'PARCEL'</code>) must be reflected here.</td><td>Text, length 13</td><td>Duplicate SPANs are valid for a one-to-many relationship between a parcel feature and Grand List records (e.g. condominium common land entered once per unlanded building, and sometimes again for the common land parcel itself). Null/empty allowed when the GIS counterpart of an active SPAN is not known.</td></tr>
+                        <tr><td>GLIST_SPAN</td><td>SPAN exactly as listed in the municipality's Grand List as an active SPAN, corresponding to GIS_SPAN. All active Grand List SPANs must be reflected here.</td><td>Text, length 13</td><td>No duplicate entries, except Null/empty when the Grand List counterpart of GIS_SPAN is unknown.</td></tr>
+                        <tr><td>YEAR</td><td>Grand List Year that mapping data represents</td><td>Short Integer</td><td>4-digit year. No Null values or zeros.</td></tr>
+                        <tr><td>TOWN</td><td>Name of the town, city, gore, or grant</td><td>Text, length 30</td><td>No Null/empty strings. See <a href="#town">TOWN domain</a>.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="poly-inactive">Feature Class: <code>VTPARCELS_&lt;Town Name&gt;_&lt;YYYY&gt;_poly_inactive</code>
+                    <a href="#poly-inactive" class="heading-permalink" aria-label="Permalink to poly_inactive">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>Inactive parcels and their related active parcels. Consists of features for all inactive parcels listed in the municipality's Grand List and their related active parcels. A cluster of inactive parcels and their related active parcel are modeled as individual parcels in this feature class, while collectively modeled as one all-encompassing active parcel in <code>poly_parcels</code>. Geometry Type: <strong>polygon</strong>. Each Grand List record must only be modeled as one record; a non-contiguous multi-part parcel is modeled as a single multi-part polygon. Mapping parcels to the public right-of-way line rather than the road centerline is a suggested best practice.</p>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th><th>Field Type</th><th>Allowed Values</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>STATUS</td><td>Indicates if the parcel is Active or Inactive</td><td>Text, length 8</td><td>No Null/empty strings. Allowed values: <code>ACTIVE</code>, <code>INACTIVE</code>.</td></tr>
+                        <tr><td>PARENTSPAN</td><td>Unique number assigned by VT Dept. of Taxes</td><td>Text, length 13</td><td>Only populate for Inactive parcels: the SPAN of the related Active parcel, as listed in the Grand List (<code>nnn-nnn-nnnnn</code>).</td></tr>
+                        <tr><td>SPAN</td><td>Unique number assigned by VT Dept. of Taxes</td><td>Text, length 13</td><td>SPAN of the parcel as listed in the Grand List (<code>nnn-nnn-nnnnn</code>). Only one record may carry a given SPAN.</td></tr>
+                        <tr><td>MAPID</td><td>Unique identification of the parcel assigned by the town</td><td>Text, length 80</td><td>Text up to length of field.</td></tr>
+                        <tr><td>PROPTYPE</td><td>Type of property/area</td><td>Text, length 9</td><td>Enter <code>PARCEL</code> (can be set as the geodatabase default). No Null/empty strings.</td></tr>
+                        <tr><td>YEAR</td><td>Grand List Year that mapping data represents</td><td>Short Integer</td><td>4-digit year. No Null values or zeros.</td></tr>
+                        <tr><td>TOWN</td><td>Name of the town, city, gore, or grant</td><td>Text, length 30</td><td>No Null/empty strings. See <a href="#town">TOWN domain</a>.</td></tr>
+                        <tr><td>SOURCENAME</td><td>Name of the source information</td><td>Text, length 80</td><td>Optional. Null/empty strings allowed.</td></tr>
+                        <tr><td>SOURCETYPE</td><td>Type of source information</td><td>Text, length 19</td><td>No Null/empty strings. See <a href="#sourcetype">SOURCETYPE domain</a>.</td></tr>
+                        <tr><td>SOURCEDATE</td><td>Date of the source information</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>; fill unknown MM/DD with zeros; <code>UNKNOWN</code> if not known.</td></tr>
+                        <tr><td>EDITMETHOD</td><td>Method of capturing the feature's geometry</td><td>Text, length 20</td><td>No Null/empty strings. See <a href="#editmethod">EDITMETHOD domain</a>.</td></tr>
+                        <tr><td>EDITOR</td><td>Name of editor that added or modified the feature</td><td>Text, length 50</td><td>No Null/empty strings. <code>UNKNOWN</code> if unknown.</td></tr>
+                        <tr><td>EDITDATE</td><td>Date the feature was added or modified</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>, or <code>UNKNOWN</code>.</td></tr>
+                        <tr><td>MATCHSTAT</td><td>Only applicable if STATUS = INACTIVE. Status of matching the inactive SPAN to an inactive SPAN in the Grand List.</td><td>Text, length 9</td><td>Optional; Null/empty allowed. <code>MATCH</code> if matched to an inactive Grand List SPAN, otherwise <code>UNMATCHED</code>.</td></tr>
+                        <tr><td>EDITNOTE</td><td>Additional helpful information on the feature</td><td>Text, length 254</td><td>Optional. Null/empty strings allowed.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="topology">Topology/Geometry Requirements
+                    <a href="#topology" class="heading-permalink" aria-label="Permalink to Topology/Geometry Requirements">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <ul>
+                    <li>Lines of <code>line_parcels</code> must not overlap (cannot share segments).</li>
+                    <li>Lines of <code>line_parcels</code> must not intersect (cannot cross one another; can share endpoints).</li>
+                    <li>Lines of <code>line_parcels</code> must not self-intersect.</li>
+                    <li>Polygons of <code>poly_parcels</code> must not overlap (can share edges or vertices).</li>
+                    <li>Polygon boundaries of <code>poly_parcels</code> must be covered by lines of <code>line_parcels</code>.</li>
+                    <li>Polygons of <code>poly_parcels</code> must not have gaps — no void areas within or between polygons.</li>
+                    <li>Polygons of <code>poly_inactive</code> must not overlap (can share edges or vertices).</li>
+                    <li>For <code>poly_inactive</code>, edges of a cluster of polygons must share edges of a polygon in <code>poly_parcels</code>.</li>
+                    <li>Polygons are closed at the town boundary.</li>
+                    <li>Polygon feature classes do not have sliver polygons.</li>
+                    <li>For <code>poly_inactive</code>, the aggregated polygon areas of an active parcel and its related inactive parcels must equate to the area of the active parcel as modeled in <code>poly_parcels</code> (all pieces add up to the whole).</li>
+                    <li>No feature classes may contain any Null/empty geometry objects whatsoever.</li>
+                </ul>
+
+                <h4 id="span-match">Requirement for SPAN Match
+                    <a href="#span-match" class="heading-permalink" aria-label="Permalink to Requirement for SPAN Match">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>At least 99% of records with active SPAN numbers in the municipality's Grand List can be joined to SPAN field entries of <code>poly_parcels</code> via the following three steps. First, the intersection table is joined to the municipality's Grand List (active SPAN records only) by SPAN via its <code>GLIST_SPAN</code> field. Second, <code>poly_parcels</code> is joined to the result of the first join by SPAN via the <code>GIS_SPAN</code> field of the intersection table. Third, if at least 99% of Grand List records have a joined SPAN from <code>poly_parcels</code> in the result of the second join, the requirement for SPAN match is met.</p>
+
+                <h3 id="level-2">Level 2 Requirements
+                    <a href="#level-2" class="heading-permalink" aria-label="Permalink to Level 2 Requirements">
+                    <i class="fas fa-link"></i></a>
+                </h3>
+                <p>Level 2 includes all Level 1 requirements plus the following, providing a framework for an enhanced parcel data set.</p>
+
+                <h4 id="poly-easements">Feature Class: <code>VTPARCELS_&lt;Town Name&gt;_&lt;YYYY&gt;_poly_easements</code>
+                    <a href="#poly-easements" class="heading-permalink" aria-label="Permalink to poly_easements">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>Optional unless specified as required in contract. Easements such as ingress/egress and access easements; contracts should specify particular easement types to be modeled. Ingress/egress or "private right-of-way" easements that overlay underlying parcels are NOT considered parcels and can be modeled within this feature class. Geometry Type: <strong>polygon</strong>. Each multi-part non-contiguous easement is modeled by one multi-part feature.</p>
+                <table>
+                    <thead>
+                        <tr><th>Field Name</th><th>Description</th><th>Field Type</th><th>Allowed Values</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ESMTTYPE</td><td>Easement type</td><td>Text, length 20</td><td>See <a href="#esmttype">ESMTTYPE domain</a>. Otherwise Null/empty allowed.</td></tr>
+                        <tr><td>SOURCENAME</td><td>Name of the source information</td><td>Text, length 80</td><td>Optional. Null/empty strings allowed.</td></tr>
+                        <tr><td>SOURCETYPE</td><td>Type of source information, such as plat</td><td>Text, length 19</td><td>No Null/empty strings.</td></tr>
+                        <tr><td>SOURCEDATE</td><td>Date of the source information</td><td>Text, length 8</td><td>No Null/empty strings. <code>UNKNOWN</code> if not known, otherwise <code>YYYYMMDD</code> (fill unknown MM/DD with zeros).</td></tr>
+                        <tr><td>EDITMETHOD</td><td>Method of capturing the feature's geometry</td><td>Text, length 20</td><td>No Null/empty strings. See <a href="#editmethod">EDITMETHOD domain</a>.</td></tr>
+                        <tr><td>EDITOR</td><td>Name of editor that added or modified the feature</td><td>Text, length 50</td><td>No Null/empty strings. <code>UNKNOWN</code> if unknown.</td></tr>
+                        <tr><td>EDITDATE</td><td>Date the feature was added or modified</td><td>Text, length 8</td><td>No Null/empty strings. <code>YYYYMMDD</code>, or <code>UNKNOWN</code>.</td></tr>
+                        <tr><td>EDITNOTE</td><td>Additional helpful information on the feature</td><td>Text, length 254</td><td>Text up to length of field. Null/empty strings allowed.</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="span-match-level2">Additional Requirement for SPAN Match
+                    <a href="#span-match-level2" class="heading-permalink" aria-label="Permalink to Additional Requirement for SPAN Match">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>In addition to the Level 1 SPAN match requirement: at least 99% of records in <code>poly_parcels</code> representing parcels (<code>PROPTYPE = 'PARCEL'</code>) can be joined to records with active SPAN numbers in the municipality's Grand List via the following three steps. First, the intersection table is joined to <code>poly_parcels</code> records with <code>PROPTYPE = 'PARCEL'</code> by SPAN via its <code>GIS_SPAN</code> field. Second, the municipality's Grand List (active SPAN records only) is joined to the result of the first join by SPAN via the <code>GLIST_SPAN</code> field of the intersection table. Third, if at least 99% of <code>poly_parcels</code> records have a joined SPAN from the Grand List in the result of the second join, the requirement for additional SPAN match is met.</p>
+
+                <h3 id="domains">Domains
+                    <a href="#domains" class="heading-permalink" aria-label="Permalink to Domains">
+                    <i class="fas fa-link"></i></a>
+                </h3>
+
+                <h4 id="condominium-common-land">Condominium Common Land SPAN Convention
+                    <a href="#condominium-common-land" class="heading-permalink" aria-label="Permalink to Condominium Common Land SPAN Convention">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>In some instances, a deed specifies a percentage of common land ownership to each condominium unit and the common land does not have a SPAN number. In cases when the common land does not have a SPAN, the <code>SPAN</code> field of <code>poly_parcels</code> should be populated with a unique value in lieu of a SPAN number per the pattern <code>C-&lt;FIPS6 code of the locality&gt;-&lt;next unused integer, starting with 1&gt;</code>. For example, the first instance of common condominium land with no SPAN in Williston would be <code>C-7085-1</code>; the second would be <code>C-7085-2</code>. The purpose of these SPAN "fillers" is to give common land a unique identifier that can relate it to unlanded condo units entered from the Grand List within the intersection table.</p>
+
+                <h4 id="proptype">PROPTYPE
+                    <a href="#proptype" class="heading-permalink" aria-label="Permalink to PROPTYPE">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <table>
+                    <thead><tr><th>Value</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>PARCEL</td><td>Parcel</td></tr>
+                        <tr><td>ROW_ROAD</td><td>Public road right-of-way</td></tr>
+                        <tr><td>ROW_RAIL</td><td>Railroad right-of-way</td></tr>
+                        <tr><td>ROW_TRAIL</td><td>Legal trail right-of-way as defined on the VTrans General Highway Maps</td></tr>
+                        <tr><td>WATER</td><td>Surface water area that serves as property boundary</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="sourcetype">SOURCETYPE
+                    <a href="#sourcetype" class="heading-permalink" aria-label="Permalink to SOURCETYPE">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <table>
+                    <thead><tr><th>Value</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>SURVEY/PLAT</td><td>Survey or plat</td></tr>
+                        <tr><td>DEED</td><td>Deed</td></tr>
+                        <tr><td>LINES OF OCCUPATION</td><td>Boundary, such as a stone wall, that is not very visible on the ground but might be detected by technologies such as lidar or ortho imagery</td></tr>
+                        <tr><td>SCANNED TAX MAP</td><td>Scanned tax map</td></tr>
+                        <tr><td>NON-SCANNED TAX MAP</td><td>Non-scanned paper tax map</td></tr>
+                        <tr><td>UNKNOWN</td><td>Unknown, such as pre-existing parcel GIS data</td></tr>
+                        <tr><td>MULTIPLE</td><td>Multiple sources</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="pltype">PLTYPE
+                    <a href="#pltype" class="heading-permalink" aria-label="Permalink to PLTYPE">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <table>
+                    <thead><tr><th>Code</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>PARCEL</td><td>Parcel boundary only</td></tr>
+                        <tr><td>ROW_ROAD</td><td>Edge of public road right-of-way</td></tr>
+                        <tr><td>ROW_RAIL</td><td>Edge of railroad right-of-way</td></tr>
+                        <tr><td>ROW_TRAIL</td><td>Edge of legal trail right-of-way as defined on the VTrans General Highway Maps</td></tr>
+                        <tr><td>WATER</td><td>Edge of surface water area that serves as property boundary</td></tr>
+                        <tr><td>VILLAGE</td><td>Village boundary</td></tr>
+                        <tr><td>TOWN</td><td>Town boundary</td></tr>
+                        <tr><td>STATE</td><td>State boundary</td></tr>
+                        <tr><td>COUNTRY</td><td>International boundary</td></tr>
+                        <tr><td>BREAKLINE</td><td>Division of status or name (not for map display)</td></tr>
+                        <tr><td>DISPUTE</td><td>Parcel boundary whose location is disputed</td></tr>
+                        <tr><td>HOOK</td><td>Parcel hook for cartographic presentation</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="town">TOWN
+                    <a href="#town" class="heading-permalink" aria-label="Permalink to TOWN">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <p>Use the name of the locality as specified in the <code>COMMNAME</code> field of VCGI's commcode lookup table, with codes corresponding to the <a href="https://files.vcgi.vermont.gov/other/standards-guidelines/geonames-codes/geonames-codes-standard.html">Vermont Geographic Area Names and Codes Standard</a>. Must be in all capital letters, with quotes removed (e.g. <code>ST. JOHNSBURY</code> and <code>BUELS GORE</code>).</p>
+
+                <h4 id="editmethod">EDITMETHOD
+                    <a href="#editmethod" class="heading-permalink" aria-label="Permalink to EDITMETHOD">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <table>
+                    <thead><tr><th>Code</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>HEADS UP DIGITIZING</td><td>Capturing geometry into a layer that is superimposed to underlying source data, such as aerial imagery</td></tr>
+                        <tr><td>COORDINATED COGO</td><td>COGO line work placed in real-world coordinates</td></tr>
+                        <tr><td>NON-COORDINATED COGO</td><td>COGO line work placed by best fit to other evidence</td></tr>
+                        <tr><td>COORDINATED CADD</td><td>CADD line work placed in real-world coordinates</td></tr>
+                        <tr><td>NON-COORDINATED CADD</td><td>CADD line work placed by best fit to other evidence</td></tr>
+                        <tr><td>GIS GRADE GPS</td><td>GIS-grade GPS collection</td></tr>
+                        <tr><td>RTK GPS</td><td>High-precision GPS collection conducted with Real-Time Kinematic (RTK) positioning</td></tr>
+                        <tr><td>OTHER</td><td>&nbsp;</td></tr>
+                        <tr><td>UNKNOWN</td><td>&nbsp;</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 id="esmttype">ESMTTYPE <span style="font-size:0.6em;font-weight:normal;">(Level 2 only)</span>
+                    <a href="#esmttype" class="heading-permalink" aria-label="Permalink to ESMTTYPE">
+                    <i class="fas fa-link"></i></a>
+                </h4>
+                <table>
+                    <thead><tr><th>Code</th><th>Description</th></tr></thead>
+                    <tbody>
+                        <tr><td>ACCESS</td><td>Access easement</td></tr>
+                        <tr><td>ROW</td><td>Right of way easement</td></tr>
+                        <tr><td>RAILROAD</td><td>Railroad easement</td></tr>
+                        <tr><td>CONSERVATION</td><td>Conservation easement</td></tr>
+                        <tr><td>FLOOD</td><td>Flood easement</td></tr>
+                        <tr><td>SEWER</td><td>Sewer easement</td></tr>
+                        <tr><td>WATER</td><td>Water easement</td></tr>
+                        <tr><td>DRAINAGE</td><td>Drainage easement</td></tr>
+                        <tr><td>GAS</td><td>Gas easement</td></tr>
+                        <tr><td>OIL</td><td>Oil easement</td></tr>
+                        <tr><td>ELECTRIC</td><td>Electric easement</td></tr>
+                        <tr><td>UTILITY</td><td>Utility easement</td></tr>
+                        <tr><td>LAND USE RESTRICTION</td><td>Land use restriction</td></tr>
+                        <tr><td>ZONING RESTRICTION</td><td>Zoning restriction</td></tr>
+                        <tr><td>MISC</td><td>Misc. easement</td></tr>
+                        <tr><td>UNKNOWN</td><td>Unknown easement</td></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!--RETURN TO MAIN ARTICLE CONTENT-->
+        <div class="content-wrapper">
+            <div class="main-article-content">
+
+                <h2 id="history">Updates and History
+                    <a href="#history" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <ul>
+                    <li><strong>October 20, 2016</strong> - Version 2.3 adopted by the Vermont Enterprise GIS Consortium (EGC).</li>
+                    <li><strong>October 16, 2016</strong> - Version 2.2, intermediate revised draft.</li>
+                    <li><strong>October 12, 2016</strong> - Version 2.1, intermediate revised draft.</li>
+                    <li><strong>August 19, 2016</strong> - Version 2.0, draft posted for public comment.</li>
+                    <li><strong>November 2013</strong> - Version 1.1.</li>
+                    <li><strong>March 2012</strong> - Version 1.0.</li>
+                </ul>
+
+                <h2 id="statutory-authority">Statutory Authority
+                    <a href="#statutory-authority" class="heading-permalink" aria-label="Permalink to this section">
+                    <i class="fas fa-link"></i></a>
+                </h2>
+                <p>The Vermont Center for Geographic Information (VCGI) has the <a href="https://legislature.vermont.gov/statutes/fullchapter/10/008">statutory authority</a> to craft and adopt Vermont GIS standards and guidelines. This standard was adopted following the procedure established in VCGI's <a href="https://vcgi.vermont.gov/document/procedure-adoption-vtgis-standards-and-guidelines">"Adoption of VT GIS Standards and Guidelines"</a> (Version 1.0). A draft of the standard was released for public comment on August 19, 2016, and the State's Enterprise GIS Consortium (EGC) voted to approve the standard on October 20, 2016.</p>
+
+            </div><!--END MAIN ARTICLE CONTENT-->
+        </div><!--END CONTENT WRAPPER-->
+        <!-- =================================================================== -->
+        <!-- ===================== END YOUR CONTENT HERE ===================== -->
+        <!-- =================================================================== -->
+
+    </div>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="usa-footer usa-footer--big vcgi-footer" role="contentinfo">
+        <div class="vcgi-footer-upper">
+            <div class="grid-container">
+                <div class="grid-row grid-gap">
+                    <!-- Sidebar Column -->
+                    <div class="grid-col-12 desktop:grid-col-3 vcgi-sidebar-col">
+                        <h2>Vermont Center for Geographic Information</h2>
+                        <p>A Division of the <a href="https://digitalservices.vermont.gov/" class="vcgi-footer-link">Agency of Digital Services</a></p>
+                        <p><a href="mailto:vcgi@vermont.gov" class="vcgi-footer-link">Email VCGI</a></p>
+                        <p>
+                            <a href="mailto:tim.terway@vermont.gov" class="vcgi-footer-link">Tim Terway</a>, Helpful GIS Professional<br>
+                            <a href="mailto:john.e.adams@vermont.gov" class="vcgi-footer-link">John E. Adams</a>, Director
+                        </p>
+                        <ul class="vcgi-sidebar-social">
+                            <li>
+                                <a href="https://github.com/vcgi" target="_blank" rel="noreferrer" aria-label="VCGI on GitHub">
+                                    <i class="fab fa-github" style="font-size: 32px; color: #003300;" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/user/VTgeospatial" target="_blank" rel="noreferrer" aria-label="VCGI on YouTube">
+                                    <i class="fab fa-youtube" style="font-size: 32px; color: #003300;" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <hr>
+                        <p>VCGI is your source for the State of Vermont's geospatial data, information, and activities.</p>
+                    </div>
+
+                    <!-- Content Column 1 -->
+                    <div class="grid-col-12 desktop:grid-col-3 vcgi-footer-content-col">
+                        <h3>Standards and Guidelines</h3>
+                        <ul>
+                            <li><a href="https://vcgi.vermont.gov/resources/vermont-gis-standards-and-guidelines" class="vcgi-footer-link">Standards and Guidelines Directory</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Content Column 2 -->
+                    <div class="grid-col-12 desktop:grid-col-3 vcgi-footer-content-col">
+                        <h3>Popular Datasets</h3>
+                        <ul>
+                            <li><a href="https://geodata.vermont.gov/pages/parcels" class="vcgi-footer-link">Parcels</a></li>
+                            <li><a href="https://geodata.vermont.gov/pages/elevation" class="vcgi-footer-link">Elevation (Includes Lidar)</a></li>
+                            <li><a href="https://geodata.vermont.gov/pages/imagery" class="vcgi-footer-link">Imagery</a></li>
+                            <li><a href="https://geodata.vermont.gov/pages/land-cover" class="vcgi-footer-link">Land Cover</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Content Column 3 (with Return to Top) -->
+                    <div class="grid-col-12 desktop:grid-col-3 vcgi-footer-content-col">
+                        <h3>Map Applications</h3>
+                        <ul>
+                            <li><a href="https://maps.vermont.gov/vcgi/html5viewer/?viewer=vtmapviewer" class="vcgi-footer-link">Vermont Interactive Map Viewer</a></li>
+                            <li><a href="https://maps.vcgi.vermont.gov/ParcelViewer/" class="vcgi-footer-link">Vermont Parcel Viewer</a></li>
+                            <li><a href="https://maps.vcgi.vermont.gov/parcelstatus/" class="vcgi-footer-link">Municipal Parcel Map Status</a></li>
+                            <li><a href="https://vcgi.maps.arcgis.com/apps/instant/lookup/index.html?appid=bbbeff3500ed43c4a2bdb0f6f56377a1" class="vcgi-footer-link">Vermont Boundaries and Jurisdictions</a></li>
+                            <li><a href="https://landsurvey.vermont.gov/" class="vcgi-footer-link">Vermont Land Survey Library</a></li>
+                            <li><a href="https://maps.vcgi.vermont.gov/OrthoFinder/" class="vcgi-footer-link">Vermont Orthoimagery Finder</a></li>
+                            <li><a href="https://maps.vcgi.vermont.gov/OrthoStatus/" class="vcgi-footer-link">Vermont Orthoimagery Status</a></li>
+                            <li><a href="https://maps.vcgi.vermont.gov/LidarFinder/" class="vcgi-footer-link">Vermont Lidar Finder</a></li>
+                            <li><a href="https://maps.vcgi.vermont.gov/lidarstatus/" class="vcgi-footer-link">Vermont Lidar Status</a></li>
+                            <li><a href="https://vcgi.vermont.gov/maps/partner-agency-maps" class="vcgi-footer-link">See More Here</a></li>
+                        </ul>
+                        <!-- Return to top is placed inside the column -->
+                        <div class="usa-footer__return-to-top">
+                            <a href="#" id="return-to-top-link">
+                                <div class="return-to-top-icon margin-bottom-1">
+                                    <svg class="svg-inline--fa fa-circle-arrow-up" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM382.6 254.6c-12.5 12.5-32.75 12.5-45.25 0L288 205.3V384c0 17.69-14.33 32-32 32s-32-14.31-32-32V205.3L174.6 254.6c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l103.1-103.1C241.3 97.4 251.1 96 256 96c4.881 0 14.65 1.391 22.65 9.398l103.1 103.1C395.1 221.9 395.1 242.1 382.6 254.6z"></path>
+                                    </svg>
+                                </div>
+                                Return to top
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vcgi-footer-bottom-bar">
+            <div class="vcgi-footer-copyright">
+                <p>Copyright © <span id="copyright-year">2025</span> State of Vermont All rights reserved. |</p>
+                <ul>
+                    <li><a href="https://www.vermont.gov/policies">Policies</a></li>
+                    <li><a href="https://www.vermont.gov/policies/accessibility">Accessibility Policy</a></li>
+                    <li><a href="https://www.vermont.gov/policies/privacy">Privacy Policy</a></li>
+                    <li><a href="https://vt.accessgov.com/feedback-survey/Forms/Page/feedback-survey/1b75365f-4e67-4f58-9080-cef25029f0a6/9fc7dbed-470c-4e68-90b8-d0ced27b6111/">Feedback Survey</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+      document.getElementById('copyright-year').textContent = new Date().getFullYear();
+      const returnToTopLink = document.getElementById('return-to-top-link');
+      if (returnToTopLink) {
+          returnToTopLink.addEventListener('click', function(event) {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+      }
+    </script>
+</body>
+</html>
