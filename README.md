@@ -5,7 +5,7 @@ This repo is a working example of developing a [Claude Code skill](https://docs.
 ## What's here
 
 - **`.claude/skills/vt-gis-standard/`** — a skill that scaffolds new VT GIS Standard/Guideline HTML documents matching VCGI's shared publishing template (common header/footer/CSS, table of contents, standard section skeleton, Datawrapper table conventions). See [`SKILL.md`](.claude/skills/vt-gis-standard/SKILL.md) for the full authoring workflow and [`reference/`](.claude/skills/vt-gis-standard/reference/) for the boilerplate template and Datawrapper embed patterns it's built from.
-- **`examples/parcel/`** — a worked example: the currently-operational [Vermont GIS Parcel Data Standard v2.3](https://vcgi.vermont.gov/sites/vcgiupdate/files/doc_library/02-k-VT_GIS_Parcel_Data_Standard.pdf) (source PDF and Word doc included alongside) ported into the skill's HTML template, as a real-world test of the skill against an existing, non-web-native standard.
+- **`examples/parcel/`** — a worked example: the currently-operational [Vermont GIS Parcel Data Standard v2.3](https://vcgi.vermont.gov/sites/vcgiupdate/files/doc_library/02-k-VT_GIS_Parcel_Data_Standard.pdf) (source PDF and Word doc included alongside) ported into the skill's HTML template, as a real-world test of the skill against an existing, non-web-native standard. Live preview via GitHub Pages: **[vcgitimterway.github.io/claude-code-demo-day-2/examples/parcel/parcel-standard.html](https://vcgitimterway.github.io/claude-code-demo-day-2/examples/parcel/parcel-standard.html)**
 
 ## Background
 
